@@ -1,0 +1,87 @@
+<!DOCTYPE>
+<html>
+<head>
+<title>Muestra Tabla Multiplicar</title>
+
+	<script type="text/javascript">
+	function muestra(sValor, oTbl, oElemento){
+			var nTabla=0, i=0;
+			var oLinea;
+			var oCeldaOpe, oCeldaRes;
+			var oCtrl;
+				if (isNaN(sValor))
+					alert("Debe elegir la tabla de multiplicar");
+				else{
+					nTabla = parseInt(sValor, 10);
+					if (oElemento != null){
+						oElemento.style.visibility = "visible";
+
+						if (oTbl != null){
+							//Si la tabla está llena, vaciarla primero
+							if (oTbl.rows.length>1){
+								for (i=1; i<=10; i++)
+									oTbl.deleteRow(-1);
+							}
+
+							//Colocar operaciones y campos para resultado en la tabla
+							for (i=1; i<=10; i++){
+								oLinea = oTbl.insertRow(-1);
+								oCeldaOpe = oLinea.insertCell(0);
+								oCeldaRes = oLinea.insertCell(1);
+
+								oCeldaOpe.innerHTML = nTabla + " * " + i;
+								oCeldaRes.innerHTML = nTabla * i;
+
+								}
+						}
+					}
+				}
+}
+
+
+		function Limpia(oTbl){
+
+		//	oElemento.parentNode.removeChild(oElemento);
+		for (i=1; i<=10; i++)
+			oTbl.deleteRow(1);// SOLO CAMBIE EL -1 A 1 PARA QUE EL ENCABEZADO NO SE BORRE
+	   }
+
+	</script>
+
+
+</head>
+<body>
+	<form>
+		Selecciona que n&uacute;mero de tabla
+		<select name="opTabla" id="opTabla">
+			<option>2</option>
+			<option>3</option>
+			<option>4</option>
+			<option>5</option>
+			<option>6</option>
+			<option>7</option>
+			<option>8</option>
+			<option>9</option>
+			<option>10</option>
+		</select>
+
+		<p><input type="button" value="Mostrar Tabla"
+					onclick="muestra(opTabla.value, tabla, document.getElementById('contenido'));"/>
+					<br/>
+		</p>
+
+		<div id="contenido" style="visibility:hidden">
+			<table id="tabla" border="2" >
+				<thead>
+					<th>Operaci&oacute;n</th>
+					<th>Resultado</th>
+				</thead>
+			</table>
+			<br><br>
+				<input type="button" value="Limpia Tabla" onclick="Limpia(document.getElementById('tabla'));"/>
+			</div>
+	</form>
+
+
+</body>
+</html>

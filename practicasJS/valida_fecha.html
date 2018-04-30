@@ -1,0 +1,21 @@
+<!DOCTYPE >
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="PQG">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script type="text/javascript" src="js/funcionesFecha.js"></script>
+		<title>Validar captura de fechas</title>
+</head>
+<body>
+
+	<form>
+		Fecha de nacimiento (dd/mm/aaaa) <input type="text" name="txtFec" maxlength="10" size="12"/>
+		<br/>
+		<!--<input type="submit" onClick=" printFecha(validaFechaMenor(txtFec), txtFec);" value="Ok"/>-->
+		<input type="button" value="Calcula Signo Zodiacal" onClick="validaFechaMenor(txtFec)" />
+		<p id="signoDiv"></p>
+	</form>
+</body>
+</html>

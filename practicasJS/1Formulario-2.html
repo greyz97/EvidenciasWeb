@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="PQG">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        label {
+          display: block;
+          margin: .5em 0 0 0;
+          }
+
+        .btn {
+          display: block;
+          margin: 1em 0;
+          }
+    </style>
+
+  </head>
+  <body>
+    <form class="form" action="/action_page.php" method="get" target="_blank">
+        <fieldset>
+        <legend>Alta en el servicio Social</legend>
+
+        <label for="nombre">Nombre</label>
+        <input type="text"  id="nombre" name="nombre" />
+
+        <label for="apellidos">Apellidos</label>
+        <input type="text" id="apellidos" name="apellidos" size="50" />
+
+        <label for="rfc">RFC</label>
+        <input type="text" id="rfc" name="rfc" size="13" maxlength="13" pattern="[A-Za-z]{4}[0-9]{6}[A-Za-z0-9]{3}"/>
+        <!--AQUI SE DISEÑA EL PATRON PARA VALIDAR EL FORMATO DE UNA CURP O RFC-->
+
+        <label for="curp">CURP</label>
+        <input type="text" id="curp" name="curp" size="18" maxlength="18" pattern="[A-Z]{4}[0-9]{6}[A-Z]{6}[0-9]{2}"/>
+
+         <label for="archivo">ARCHIVO</label>
+        <input type="text" id="archivo" name="archivo" size="16" maxlength="16" pattern="[A-Za-z]+[.]{1}[A-Za-z]+"/>
+
+        <label for="contrasena">Contraseña</label>
+        <input type="password" id="contrasena" name="password"/>
+
+        <input class="btn" type="submit" value="Darme de alta" />
+
+        <button type="reset">Limpiar</button>
+                    <!--disabled-->
+
+        </fieldset>
+      </form>
+  </body>
+</html>

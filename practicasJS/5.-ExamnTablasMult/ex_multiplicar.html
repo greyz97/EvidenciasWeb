@@ -1,0 +1,44 @@
+﻿<!DOCTYPE >
+<html>
+<!--
+Solución al ejercicio de "Examen de las Tablas de Multiplicar"
+-->
+<html>
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Examen de Tablas de Multiplicar</title>
+	</head>
+	<body>
+		<script language="javascript" src="varios.js"></script>
+		<form>
+			Selecciona que n&uacute;mero de tabla
+			<select name="opTabla" id="opTabla">
+				<option>2</option>
+				<option>3</option>
+				<option>4</option>
+				<option>5</option>
+				<option>6</option>
+				<option>7</option>
+				<option>8</option>
+				<option>9</option>
+				<option>10</option>
+			</select>
+
+			<p><input type="button" value="Realizar Examen"
+						onclick="muestra(opTabla.value, tabla, document.getElementById('contenido'));"/>
+						<br/>
+			</p>
+
+			<div id="contenido" style="visibility:hidden">
+				<table id="tabla" border="2" >
+					<thead>
+						<th>Operaci&oacute;n</th>
+						<th>Resultado</th>
+					</thead>
+				</table>
+				<br><br>
+				<input type="button" value="Calificar Examen" onclick="califica(opTabla.value, tabla);"/>
+			</div>
+		</form>
+	</body>
+</html>
