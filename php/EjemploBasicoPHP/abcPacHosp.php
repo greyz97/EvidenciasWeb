@@ -35,6 +35,7 @@ $oPacHosp = new PacienteHospitalario();
 				}
 			}
 			if ($sOpe == 'a'){
+				echo "vas a agregar a un paciente";
 				$bCampoEditable = true;
 				$bLlaveEditable = true;
 				$sNomBoton ="Agregar";
@@ -63,6 +64,7 @@ $oPacHosp = new PacienteHospitalario();
 		exit();
 	}
 ?>
+
 		<section>
 			<form name="abcPH" action="resPacABC.php" method="post">
 				<input type="hidden" name="txtOpe" value="<?php echo $sOpe;?>">
@@ -82,7 +84,7 @@ $oPacHosp = new PacienteHospitalario();
 					<?php echo ($bCampoEditable==true?'':' disabled ');?>
 					value="<?php echo $oPacHosp->getApeMat();?>"/>
 				<br/>
-				
+
 				Sexo
 				<input type="radio" name="rbSexo" value="F"
 					<?php echo ($bCampoEditable==true?'':' disabled ');?>
@@ -98,9 +100,13 @@ $oPacHosp = new PacienteHospitalario();
 				<br/>
 
 				<input type ="submit" value="<?php echo $sNomBoton;?>" 
-				onClick="return evalua(txtNombre, txtApePat, rbSexo, txtFecNacim);"/>
+				onClick="return evalua(txtNombre, txtApePat, rbSexo);"/>
 				<input type="submit" name="Submit" value="Cancelar" 
-				 onClick="abcPH.action='tabpacientes.php';">
+
+				
+				
+
+				
 			</form>
 		</section>
 <?php

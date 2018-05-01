@@ -67,14 +67,18 @@ class PacienteHospitalario extends Paciente{
 			throw new Exception("PacienteHospitalario->insertar(): faltan datos");
 		else{
 			if ($oAccesoDatos->conectar()){
-		 		$sQuery = "INSERT INTO paciente (snombre, sapepat, sapemat, 
-											dfecnacim, ssexo, salergias) 
+				$fech= "11-10-1970";
+		 		$sQuery = "INSERT INTO paciente (snombre, sapepat, sapemat, dfecnacim,
+											ssexo, salergias) 
 					VALUES ('".$this->sNombre."', '".$this->sApePat."', 
-					".($this->sApeMat==""?"null":"'".$this->sApeMat."'").",
-					null, 
-					'".$this->sSexo."', ".$this->sAlergias.");";
+					 '".$this->sApeMat."', 
+					'".Datetime::createFromFormat('d-m-Y', $fech)->format('Y-m-d')."', 
+					'".$this->sSexo."', '".$this->sAlergias."');";
 				$nAfectados = $oAccesoDatos->ejecutarComando($sQuery);
+				echo "Este es el resultado del query agregar :  ".$nAfectados." <- fin y query: ".$sQuery;
 				$oAccesoDatos->desconectar();			
+			}else{
+				echo "no se pudo conectar";
 			}
 		}
 		return $nAfectados;
@@ -126,10 +130,10 @@ class PacienteHospitalario extends Paciente{
 		else{
 			if ($oAccesoDatos->conectar()){
 				echo "se hizo la conexion y estas a punto de  borrar ";
-		 		$sQuery = "DELETE * FROM paciente WHERE nidpac= ".$this->nIdPaciente;
+		 		$sQuery = "DELETE FROM paciente WHERE nidpac= ".$this->nIdPaciente;
 				$nAfectados = $oAccesoDatos->ejecutarComando($sQuery);
 				echo "consulta es : ".$sQuery;
-				echo "este es el resultado de borrar el id ".$this->nIdPaciente." y el resultado es ".$nAfectados;
+				echo "este es el resultado de borrar el id ".$this->nIdPaciente." y el resultado es ".$nAfectados."<- fin";
 				$oAccesoDatos->desconectar();
 			}
 		}

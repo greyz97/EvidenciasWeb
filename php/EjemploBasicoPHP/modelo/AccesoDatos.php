@@ -53,6 +53,7 @@
 				$rst = $this->oConexion->query($psConsulta); //un objeto PDOStatement o falso en caso de error
 			}catch(Exception $e){
 				throw $e;
+				echo "error consulta";
 			}
 			if ($rst){
 				foreach($rst as $oLinea){ 

@@ -22,9 +22,11 @@ $oPacHosp = new PacienteHospitalario();
 			echo " muestra variables de clave y op";
 			$sOpe = $_POST["txtOpe"];
 			$sCve = $_POST["txtClave"];
+			echo "esttosss datosss: ".$sOpe." y ".$sCve;
 			$oPacHosp->setIdPaciente($sCve);
 			
 			if ($sOpe != "b"){
+
 				$oPacHosp->setNombre($_POST["txtNombre"]);
 				$oPacHosp->setApePat($_POST["txtApePat"]);
 				$oPacHosp->setApeMat($_POST["txtApeMat"]);
@@ -33,17 +35,19 @@ $oPacHosp = new PacienteHospitalario();
 				$oPacHosp->setAlergias($_POST["txtAlergias"]);
 			}
 			try{
-				if ($sOpe == 'a')
+				if ($sOpe == 'a'){
+					echo "vas  agregar un paciente";
 					$nResultado = $oPacHosp->insertar();
-				else if ($sOpe == 'b'){
+				}
+				if ($sOpe == 'b'){
 					echo "quieres borrar un paciente: ";
 					$nResultado = $oPacHosp->borrar();
 				}
-				else 
+				if ($sOpe == 'm'){ 
 					echo "quieres modificar";
 					$nResultado = $oPacHosp->modificar();
 					echo "resultado es: ".$nResultado;
-				
+				}
 				if ($nResultado != 1){
 					$sError = "Error en bd";
 					echo "este es el error ".$sError;
@@ -65,10 +69,10 @@ $oPacHosp = new PacienteHospitalario();
 	}
 	
 	if ($sErr == ""){
-		//header("Location: tabpacientes.php");
+		header("Location: tabpacientes.php");
 	}
 	else{
-		//header("Location: error.php?sError=".$sErr);
+		header("Location: error.php?sError=".$sErr);
 	}
 	exit();
 ?>
