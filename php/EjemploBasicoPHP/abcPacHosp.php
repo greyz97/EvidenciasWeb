@@ -84,7 +84,10 @@ $oPacHosp = new PacienteHospitalario();
 					<?php echo ($bCampoEditable==true?'':' disabled ');?>
 					value="<?php echo $oPacHosp->getApeMat();?>"/>
 				<br/>
-
+				Fecha de Nacimiento (aaaa-mm-dd)
+				<input type="date" name="txtFecNacim" <?php if($bCampoEditable!=true){echo "disabled";};?> 
+				value="<?php if($sOpe != 'a'){ echo $oPacHosp->getFechaNacim()->format('Y-m-d');};?>"/>
+				<br/>
 				Sexo
 				<input type="radio" name="rbSexo" value="F"
 					<?php echo ($bCampoEditable==true?'':' disabled ');?>
@@ -100,8 +103,8 @@ $oPacHosp = new PacienteHospitalario();
 				<br/>
 
 				<input type ="submit" value="<?php echo $sNomBoton;?>" 
-				onClick="return evalua(txtNombre, txtApePat, rbSexo);"/>
-				<input type="submit" name="Submit" value="Cancelar" 
+				onClick="return evalua(txtNombre, txtApePat, rbSexo, txtFecNacim);"/>
+				<input type="button" onclick="location.href='tabpacientes.php'" name="Submit" value="Cancelar" />
 
 				
 				

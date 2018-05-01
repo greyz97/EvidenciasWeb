@@ -46,7 +46,7 @@ class PacienteHospitalario extends Paciente{
 					$this->sNombre = $arrRS[0][1];
 					$this->sApePat = $arrRS[0][2];
 					$this->sApeMat = $arrRS[0][3];
-					//$this->dFechaNacim = DateTime::createFromFormat('Y-m-d',$arrRS[0][4]);
+					$this->dFechaNacim = DateTime::createFromFormat('Y-m-d',$arrRS[0][4]);
 					$this->sSexo = $arrRS[0][5];
 					$this->sAlergias = $arrRS[0][6];
 					$bRet = true;
@@ -67,12 +67,11 @@ class PacienteHospitalario extends Paciente{
 			throw new Exception("PacienteHospitalario->insertar(): faltan datos");
 		else{
 			if ($oAccesoDatos->conectar()){
-				$fech= "11-10-1970";
 		 		$sQuery = "INSERT INTO paciente (snombre, sapepat, sapemat, dfecnacim,
 											ssexo, salergias) 
 					VALUES ('".$this->sNombre."', '".$this->sApePat."', 
 					 '".$this->sApeMat."', 
-					'".Datetime::createFromFormat('d-m-Y', $fech)->format('Y-m-d')."', 
+					'".$this->dFechaNacim->format('Y-m-d')."', 
 					'".$this->sSexo."', '".$this->sAlergias."');";
 				$nAfectados = $oAccesoDatos->ejecutarComando($sQuery);
 				echo "Este es el resultado del query agregar :  ".$nAfectados." <- fin y query: ".$sQuery;
@@ -91,8 +90,8 @@ class PacienteHospitalario extends Paciente{
 	$sQuery="";
 	$nAfectados=-1;
 		if ($this->nIdPaciente==0 OR $this->sNombre == "" OR $this->sApePat == "" OR 
-		    $this->sSexo == "" OR $this->sAlergias == ""){
-			echo "hay datos vacios".$this->nIdPaciente.$this->sNombre.$this->sApePat .$this->sSexo. $this->sAlergias;
+		    $this->sSexo == "" OR $this->sAlergias == "" OR $this->dFechaNacim == ""){
+			echo "hay datos vacios".$this->nIdPaciente.$this->sNombre.$this->sApePat .$this->sSexo. $this->sAlergias.$this->dFechaNacim;
 			throw new Exception("PacienteHospitalario->modificar(): faltan datos");
 		}		
 		else{
@@ -104,7 +103,8 @@ class PacienteHospitalario extends Paciente{
 					sapepat= '".$this->sApePat."', 
 					sapemat= '".$this->sApeMat."',					
 					ssexo = '".$this->sSexo."', 
-					salergias = '".$this->sAlergias."'
+					salergias = '".$this->sAlergias."',
+					dfecnacim = '".$this->dFechaNacim->format('Y-m-d')."'
 					WHERE nidpac = ".$this->nIdPaciente."";
 					echo "consulta : ".$sQuery;
 				$nAfectados = $oAccesoDatos->ejecutarComando($sQuery);

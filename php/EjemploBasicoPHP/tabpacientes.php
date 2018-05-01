@@ -74,6 +74,7 @@ $oPacHosp = new PacienteHospitalario();
 						<td><?php echo $oPacHosp->getApeMat(); ?></td>
 						
 						<td><?php echo $oPacHosp->getSexo(); ?></td>
+
 						<td><?php echo $oPacHosp->getAlergias(); ?></td>
 
 						<td>

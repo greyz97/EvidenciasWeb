@@ -30,7 +30,7 @@ $oPacHosp = new PacienteHospitalario();
 				$oPacHosp->setNombre($_POST["txtNombre"]);
 				$oPacHosp->setApePat($_POST["txtApePat"]);
 				$oPacHosp->setApeMat($_POST["txtApeMat"]);
-				//$oPacHosp->setFechaNacim(DateTime::createFromFormat('Y-m-d', $_POST["txtFecNacim"]));
+				$oPacHosp->setFechaNacim(DateTime::createFromFormat('Y-m-d', $_POST["txtFecNacim"]));
 				$oPacHosp->setSexo($_POST["rbSexo"]);
 				$oPacHosp->setAlergias($_POST["txtAlergias"]);
 			}
